@@ -1,0 +1,175 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-08-17T08:46:24.959Z",
+  "activeFeatures": [
+    "week2-practice",
+    "context"
+  ],
+  "primaryFeature": "week2-practice",
+  "features": {
+    "week2-practice": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-08-17T08:00:07.107Z",
+        "lastUpdated": "2026-08-17T08:46:24.959Z"
+      },
+      "lastFile": "C:\\Users\\USER\\Documents\\AI\\week2-practice\\src\\App.jsx"
+    },
+    "context": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-08-17T08:18:20.243Z",
+        "lastUpdated": "2026-08-17T08:21:01.214Z"
+      },
+      "lastFile": "C:\\Users\\USER\\Documents\\AI\\week2-practice\\src\\context\\AuthContext.jsx"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-08-17T07:46:59.914Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-08-17T08:46:24.959Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-08-17T08:00:07.107Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:00:15.148Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:00:18.022Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:00:21.924Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:06:13.156Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:18:20.243Z",
+      "feature": "context",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:18:28.246Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:18:35.733Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:18:41.474Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:18:47.092Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:19:30.965Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:20:57.189Z",
+      "feature": "context",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:21:01.214Z",
+      "feature": "context",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:21:07.163Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:21:10.770Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:25:39.026Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:46:07.357Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:46:13.300Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:46:17.754Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:46:21.523Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T08:46:24.959Z",
+      "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}
