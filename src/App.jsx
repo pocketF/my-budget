@@ -1,14 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { supabase } from './lib/supabaseClient'
 import { useAuth } from './context/AuthContext'
 import AuthForm from './components/AuthForm'
 import ExpenseForm from './components/ExpenseForm'
+import ExpenseFilters from './components/ExpenseFilters'
 import ExpenseList from './components/ExpenseList'
 import ExpenseSummary from './components/ExpenseSummary'
 
 function App() {
   const { user, loading } = useAuth()
   const [expenses, setExpenses] = useState([])
+  const [sortOrder, setSortOrder] = useState('desc')
+  const [dateFrom, setDateFrom] = useState('')
+  const [dateTo, setDateTo] = useState('')
+
+  const visibleExpenses = useMemo(() => {
+    const filtered = expenses.filter((e) => {
+      if (dateFrom && e.date < dateFrom) return false
+      if (dateTo && e.date > dateTo) return false
+      return true
+    })
+
+    return filtered.sort((a, b) =>
+      sortOrder === 'asc' ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date)
+    )
+  }, [expenses, sortOrder, dateFrom, dateTo])
 
   useEffect(() => {
     if (!user) return
@@ -40,10 +56,19 @@ function App() {
             onAdded={(row) => setExpenses((prev) => [row, ...prev])}
           />
 
-          <ExpenseSummary expenses={expenses} />
+          <ExpenseSummary expenses={visibleExpenses} />
+
+          <ExpenseFilters
+            sortOrder={sortOrder}
+            onSortOrderChange={setSortOrder}
+            dateFrom={dateFrom}
+            onDateFromChange={setDateFrom}
+            dateTo={dateTo}
+            onDateToChange={setDateTo}
+          />
 
           <ExpenseList
-            expenses={expenses}
+            expenses={visibleExpenses}
             onUpdated={(row) =>
               setExpenses((prev) => prev.map((e) => (e.id === row.id ? row : e)))
             }
