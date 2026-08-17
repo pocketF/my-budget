@@ -3,6 +3,7 @@ import { supabase } from './lib/supabaseClient'
 import { useAuth } from './context/AuthContext'
 import AuthForm from './components/AuthForm'
 import ExpenseForm from './components/ExpenseForm'
+import ExpenseList from './components/ExpenseList'
 import ExpenseSummary from './components/ExpenseSummary'
 
 function App() {
@@ -41,13 +42,13 @@ function App() {
 
           <ExpenseSummary expenses={expenses} />
 
-          <ul>
-            {expenses.map((e) => (
-              <li key={e.id}>
-                {e.date} · {e.category} · {e.amount}원 · {e.memo}
-              </li>
-            ))}
-          </ul>
+          <ExpenseList
+            expenses={expenses}
+            onUpdated={(row) =>
+              setExpenses((prev) => prev.map((e) => (e.id === row.id ? row : e)))
+            }
+            onDeleted={(id) => setExpenses((prev) => prev.filter((e) => e.id !== id))}
+          />
         </>
       ) : (
         <p>로그인하면 지출을 기록할 수 있어요.</p>

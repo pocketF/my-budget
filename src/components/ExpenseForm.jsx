@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { CATEGORIES } from '../lib/categories'
+import { validateAmount } from '../lib/validation'
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10)
@@ -16,7 +17,13 @@ export default function ExpenseForm({ userId, onAdded }) {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    if (!amount) return
+
+    const amountError = validateAmount(amount)
+    if (amountError) {
+      setError(amountError)
+      return
+    }
+
     setSaving(true)
     setError(null)
 
@@ -66,7 +73,7 @@ export default function ExpenseForm({ userId, onAdded }) {
         금액
         <input
           type="number"
-          min="0"
+          min="1"
           step="1"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
