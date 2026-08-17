@@ -3,6 +3,9 @@ import { supabase } from '../lib/supabaseClient'
 import { CATEGORIES } from '../lib/categories'
 import { validateAmount } from '../lib/validation'
 
+const fieldClass =
+  'w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10'
+
 function todayStr() {
   return new Date().toISOString().slice(0, 10)
 }
@@ -52,45 +55,71 @@ export default function ExpenseForm({ userId, onAdded }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        날짜
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-      </label>
+    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 className="text-lg font-semibold text-slate-900">지출 추가</h2>
 
-      <label>
-        카테고리
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          {CATEGORIES.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-      </label>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-2 gap-3">
+          <label className="space-y-1 text-sm text-slate-600">
+            <span>날짜</span>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+              className={fieldClass}
+            />
+          </label>
 
-      <label>
-        금액
-        <input
-          type="number"
-          min="1"
-          step="1"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          required
-        />
-      </label>
+          <label className="space-y-1 text-sm text-slate-600">
+            <span>카테고리</span>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className={fieldClass}
+            >
+              {CATEGORIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </label>
 
-      <label>
-        메모
-        <input type="text" value={memo} onChange={(e) => setMemo(e.target.value)} />
-      </label>
+          <label className="space-y-1 text-sm text-slate-600">
+            <span>금액</span>
+            <input
+              type="number"
+              min="1"
+              step="1"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              required
+              className={fieldClass}
+            />
+          </label>
 
-      <button type="submit" disabled={saving}>
-        {saving ? '저장 중...' : '추가'}
-      </button>
+          <label className="space-y-1 text-sm text-slate-600">
+            <span>메모</span>
+            <input
+              type="text"
+              value={memo}
+              onChange={(e) => setMemo(e.target.value)}
+              className={fieldClass}
+            />
+          </label>
+        </div>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+        <button
+          type="submit"
+          disabled={saving}
+          className="w-full rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-50"
+        >
+          {saving ? '저장 중...' : '추가'}
+        </button>
+
+        {error && <p className="text-sm text-red-600">{error}</p>}
+      </form>
+    </div>
   )
 }

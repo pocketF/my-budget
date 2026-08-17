@@ -3,6 +3,9 @@ import { supabase } from '../lib/supabaseClient'
 import { CATEGORIES } from '../lib/categories'
 import { validateAmount } from '../lib/validation'
 
+const fieldClass =
+  'rounded-lg border border-slate-300 px-2.5 py-1.5 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10'
+
 export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
   const [editingId, setEditingId] = useState(null)
   const [draft, setDraft] = useState(null)
@@ -78,71 +81,110 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
   }
 
   if (expenses.length === 0) {
-    return <p>기록된 지출이 없습니다.</p>
+    return (
+      <p className="rounded-xl border border-dashed border-slate-200 py-8 text-center text-sm text-slate-400">
+        기록된 지출이 없습니다.
+      </p>
+    )
   }
 
   return (
-    <div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ul>
-        {expenses.map((expense) => {
-          if (editingId === expense.id) {
-            return (
-              <li key={expense.id}>
-                <input
-                  type="date"
-                  value={draft.date}
-                  onChange={(e) => setDraft({ ...draft, date: e.target.value })}
-                />
-                <select
-                  value={draft.category}
-                  onChange={(e) => setDraft({ ...draft, category: e.target.value })}
-                >
-                  {CATEGORIES.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="number"
-                  min="1"
-                  step="1"
-                  value={draft.amount}
-                  onChange={(e) => setDraft({ ...draft, amount: e.target.value })}
-                />
-                <input
-                  type="text"
-                  value={draft.memo}
-                  onChange={(e) => setDraft({ ...draft, memo: e.target.value })}
-                />
-                <button type="button" onClick={() => saveEdit(expense.id)} disabled={savingId === expense.id}>
-                  {savingId === expense.id ? '저장 중...' : '저장'}
-                </button>
-                <button type="button" onClick={cancelEdit}>
-                  취소
-                </button>
-              </li>
-            )
-          }
+    <div className="space-y-2">
+      {error && <p className="text-sm text-red-600">{error}</p>}
 
+      {expenses.map((expense) => {
+        if (editingId === expense.id) {
           return (
-            <li key={expense.id}>
-              {expense.date} · {expense.category} · {Number(expense.amount).toLocaleString()}원 · {expense.memo}
-              <button type="button" onClick={() => startEdit(expense)}>
+            <div
+              key={expense.id}
+              className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-300 bg-slate-50 p-3"
+            >
+              <input
+                type="date"
+                value={draft.date}
+                onChange={(e) => setDraft({ ...draft, date: e.target.value })}
+                className={fieldClass}
+              />
+              <select
+                value={draft.category}
+                onChange={(e) => setDraft({ ...draft, category: e.target.value })}
+                className={fieldClass}
+              >
+                {CATEGORIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="number"
+                min="1"
+                step="1"
+                value={draft.amount}
+                onChange={(e) => setDraft({ ...draft, amount: e.target.value })}
+                className={`w-24 ${fieldClass}`}
+              />
+              <input
+                type="text"
+                value={draft.memo}
+                onChange={(e) => setDraft({ ...draft, memo: e.target.value })}
+                className={`flex-1 ${fieldClass}`}
+              />
+              <button
+                type="button"
+                onClick={() => saveEdit(expense.id)}
+                disabled={savingId === expense.id}
+                className="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-50"
+              >
+                {savingId === expense.id ? '저장 중...' : '저장'}
+              </button>
+              <button
+                type="button"
+                onClick={cancelEdit}
+                className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100"
+              >
+                취소
+              </button>
+            </div>
+          )
+        }
+
+        return (
+          <div
+            key={expense.id}
+            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 hover:bg-slate-50"
+          >
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-slate-400">{expense.date}</span>
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+                {expense.category}
+              </span>
+              <span className="font-semibold text-slate-900">
+                {Number(expense.amount).toLocaleString()}원
+              </span>
+              {expense.memo && <span className="text-slate-500">{expense.memo}</span>}
+            </div>
+
+            <div className="flex shrink-0 gap-2">
+              <button
+                type="button"
+                onClick={() => startEdit(expense)}
+                className="rounded-lg border border-slate-300 px-2.5 py-1 text-xs text-slate-600 hover:bg-slate-100"
+              >
                 수정
               </button>
               <button
                 type="button"
                 onClick={() => handleDelete(expense.id)}
                 disabled={deletingId === expense.id}
+                className="rounded-lg border border-red-200 px-2.5 py-1 text-xs text-red-600 hover:bg-red-50 disabled:opacity-50"
               >
                 {deletingId === expense.id ? '삭제 중...' : '삭제'}
               </button>
-            </li>
-          )
-        })}
-      </ul>
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -40,44 +40,59 @@ function App() {
   }, [user])
 
   if (loading) {
-    return <p>로딩 중...</p>
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-50">
+        <p className="text-sm text-slate-500">로딩 중...</p>
+      </div>
+    )
   }
 
   return (
-    <div>
-      <h1>가계부</h1>
+    <div className="min-h-screen bg-slate-50">
+      <div className="mx-auto max-w-2xl space-y-6 px-4 py-10">
+        <header>
+          <h1 className="text-2xl font-bold text-slate-900">가계부</h1>
+          <p className="mt-1 text-sm text-slate-500">지출을 기록하고 한눈에 확인하세요</p>
+        </header>
 
-      <AuthForm />
+        <AuthForm />
 
-      {user ? (
-        <>
-          <ExpenseForm
-            userId={user.id}
-            onAdded={(row) => setExpenses((prev) => [row, ...prev])}
-          />
+        {user ? (
+          <>
+            <ExpenseForm
+              userId={user.id}
+              onAdded={(row) => setExpenses((prev) => [row, ...prev])}
+            />
 
-          <ExpenseSummary expenses={expenses} />
+            <ExpenseSummary expenses={expenses} />
 
-          <ExpenseFilters
-            sortOrder={sortOrder}
-            onSortOrderChange={setSortOrder}
-            dateFrom={dateFrom}
-            onDateFromChange={setDateFrom}
-            dateTo={dateTo}
-            onDateToChange={setDateTo}
-          />
+            <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h2 className="text-lg font-semibold text-slate-900">지출 내역</h2>
 
-          <ExpenseList
-            expenses={visibleExpenses}
-            onUpdated={(row) =>
-              setExpenses((prev) => prev.map((e) => (e.id === row.id ? row : e)))
-            }
-            onDeleted={(id) => setExpenses((prev) => prev.filter((e) => e.id !== id))}
-          />
-        </>
-      ) : (
-        <p>로그인하면 지출을 기록할 수 있어요.</p>
-      )}
+              <ExpenseFilters
+                sortOrder={sortOrder}
+                onSortOrderChange={setSortOrder}
+                dateFrom={dateFrom}
+                onDateFromChange={setDateFrom}
+                dateTo={dateTo}
+                onDateToChange={setDateTo}
+              />
+
+              <ExpenseList
+                expenses={visibleExpenses}
+                onUpdated={(row) =>
+                  setExpenses((prev) => prev.map((e) => (e.id === row.id ? row : e)))
+                }
+                onDeleted={(id) => setExpenses((prev) => prev.filter((e) => e.id !== id))}
+              />
+            </section>
+          </>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+            로그인하면 지출을 기록할 수 있어요.
+          </div>
+        )}
+      </div>
     </div>
   )
 }

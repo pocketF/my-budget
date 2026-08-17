@@ -40,10 +40,16 @@ export default function AuthForm() {
 
   if (isLoggedIn) {
     return (
-      <div>
-        {message && <p style={{ color: 'green' }}>{message}</p>}
-        <span>{user.email} 로그인됨</span>
-        <button type="button" onClick={signOut}>
+      <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div>
+          {message && <p className="mb-1 text-sm text-emerald-600">{message}</p>}
+          <span className="text-sm text-slate-700">{user.email}</span>
+        </div>
+        <button
+          type="button"
+          onClick={signOut}
+          className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
+        >
           로그아웃
         </button>
       </div>
@@ -51,14 +57,19 @@ export default function AuthForm() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 className="text-lg font-semibold text-slate-900">
+        {mode === 'signIn' ? '로그인' : '회원가입'}
+      </h2>
+
+      <form onSubmit={handleSubmit} className="space-y-3">
         <input
           type="email"
           placeholder="이메일"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
         />
         <input
           type="password"
@@ -67,16 +78,27 @@ export default function AuthForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={6}
+          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
         />
-        <button type="submit" disabled={submitting}>
-          {mode === 'signIn' ? '로그인' : '회원가입'}
+        <button
+          type="submit"
+          disabled={submitting}
+          className="w-full rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-50"
+        >
+          {submitting ? '처리 중...' : mode === 'signIn' ? '로그인' : '회원가입'}
         </button>
       </form>
-      <button type="button" onClick={toggleMode}>
+
+      <button
+        type="button"
+        onClick={toggleMode}
+        className="text-sm text-slate-500 hover:text-slate-700"
+      >
         {mode === 'signIn' ? '계정이 없으신가요? 회원가입' : '이미 계정이 있으신가요? 로그인'}
       </button>
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      {message && <p className="text-sm text-emerald-600">{message}</p>}
+      {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   )
 }

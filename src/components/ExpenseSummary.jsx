@@ -40,29 +40,47 @@ export default function ExpenseSummary({ expenses }) {
   }
 
   return (
-    <div>
-      <p>총 지출: {total.toLocaleString()}원</p>
-
+    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <div>
+        <p className="text-sm text-slate-500">총 지출</p>
+        <p className="text-3xl font-bold text-slate-900">{total.toLocaleString()}원</p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
         {VIEWS.map((v) => (
           <button
             key={v.key}
             type="button"
             onClick={() => setView(v.key)}
             disabled={view === v.key}
+            className={
+              view === v.key
+                ? 'rounded-full bg-slate-900 px-3 py-1.5 text-sm font-medium text-white'
+                : 'rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-200'
+            }
           >
             {v.label}
           </button>
         ))}
       </div>
 
-      <ul>
-        {rows.map(([label, amount]) => (
-          <li key={label}>
-            {label}: {amount.toLocaleString()}원
-          </li>
-        ))}
-      </ul>
+      {rows.length === 0 ? (
+        <p className="text-sm text-slate-400">표시할 내역이 없습니다.</p>
+      ) : (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {rows.map(([label, amount]) => (
+            <div
+              key={label}
+              className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2.5"
+            >
+              <p className="truncate text-xs text-slate-500">{label}</p>
+              <p className="text-sm font-semibold text-slate-900">
+                {amount.toLocaleString()}원
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
