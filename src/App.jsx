@@ -56,7 +56,7 @@ function App() {
             onAdded={(row) => setExpenses((prev) => [row, ...prev])}
           />
 
-          <ExpenseSummary expenses={visibleExpenses} />
+          <ExpenseSummary expenses={expenses} />
 
           <ExpenseFilters
             sortOrder={sortOrder}
