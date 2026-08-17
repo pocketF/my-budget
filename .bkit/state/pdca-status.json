@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-08-17T08:46:24.959Z",
+  "lastUpdated": "2026-08-17T14:24:56.873Z",
   "activeFeatures": [
     "week2-practice",
     "context"
@@ -32,6 +32,24 @@
         "lastUpdated": "2026-08-17T08:21:01.214Z"
       },
       "lastFile": "C:\\Users\\USER\\Documents\\AI\\week2-practice\\src\\context\\AuthContext.jsx"
+    },
+    "my-budget": {
+      "phase": "archived",
+      "phaseNumber": 7,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {
+        "report": "docs/archive/2026-08/my-budget/my-budget.report.md"
+      },
+      "timestamps": {
+        "started": "2026-08-17T13:56:23.598Z",
+        "lastUpdated": "2026-08-17T14:24:56.872Z"
+      },
+      "lastFile": "c:\\Users\\USER\\Documents\\AI\\my-budget\\src\\App.jsx",
+      "archivedAt": "2026-08-17T14:35:00.000Z",
+      "archivedTo": "docs/archive/2026-08/my-budget/",
+      "archiveNote": "Partial archive: only the report exists (no Plan/Design/Analysis docs this cycle)."
     }
   },
   "pipeline": {
@@ -42,7 +60,7 @@
   "session": {
     "startedAt": "2026-08-17T07:46:59.914Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-08-17T08:46:24.959Z"
+    "lastActivity": "2026-08-17T14:24:56.873Z"
   },
   "history": [
     {
@@ -168,6 +186,90 @@
     {
       "timestamp": "2026-08-17T08:46:24.959Z",
       "feature": "week2-practice",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:23.598Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:26.889Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:29.901Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:32.974Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:43.353Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:47.084Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T13:56:50.845Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:00:52.451Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:01:02.038Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:01:43.277Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:03:11.513Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:03:26.998Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:03:33.772Z",
+      "feature": "my-budget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-08-17T14:24:56.872Z",
+      "feature": "my-budget",
       "phase": "do",
       "action": "updated"
     }
