@@ -60,23 +60,23 @@ export default function ExpenseForm({ userId, onAdded }) {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <label className="space-y-1 text-sm text-slate-600">
+          <label className="min-w-0 space-y-1 text-sm text-slate-600">
             <span>날짜</span>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className={fieldClass}
+              className={`min-w-0 max-w-full ${fieldClass}`}
             />
           </label>
 
-          <label className="space-y-1 text-sm text-slate-600">
+          <label className="min-w-0 space-y-1 text-sm text-slate-600">
             <span>카테고리</span>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className={fieldClass}
+              className={`min-w-0 max-w-full ${fieldClass}`}
             >
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
@@ -86,7 +86,7 @@ export default function ExpenseForm({ userId, onAdded }) {
             </select>
           </label>
 
-          <label className="space-y-1 text-sm text-slate-600">
+          <label className="min-w-0 space-y-1 text-sm text-slate-600">
             <span>금액</span>
             <input
               type="number"
@@ -95,17 +95,17 @@ export default function ExpenseForm({ userId, onAdded }) {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               required
-              className={fieldClass}
+              className={`min-w-0 max-w-full ${fieldClass}`}
             />
           </label>
 
-          <label className="space-y-1 text-sm text-slate-600">
+          <label className="min-w-0 space-y-1 text-sm text-slate-600">
             <span>메모</span>
             <input
               type="text"
               value={memo}
               onChange={(e) => setMemo(e.target.value)}
-              className={fieldClass}
+              className={`min-w-0 max-w-full ${fieldClass}`}
             />
           </label>
         </div>

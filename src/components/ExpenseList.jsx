@@ -103,12 +103,12 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
                 type="date"
                 value={draft.date}
                 onChange={(e) => setDraft({ ...draft, date: e.target.value })}
-                className={`w-full sm:w-auto ${fieldClass}`}
+                className={`w-full min-w-0 max-w-full sm:w-auto ${fieldClass}`}
               />
               <select
                 value={draft.category}
                 onChange={(e) => setDraft({ ...draft, category: e.target.value })}
-                className={`w-full sm:w-auto ${fieldClass}`}
+                className={`w-full min-w-0 max-w-full sm:w-auto ${fieldClass}`}
               >
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c}>
@@ -122,7 +122,7 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
                 step="1"
                 value={draft.amount}
                 onChange={(e) => setDraft({ ...draft, amount: e.target.value })}
-                className={`w-full sm:w-24 ${fieldClass}`}
+                className={`w-full min-w-0 max-w-full sm:w-24 ${fieldClass}`}
               />
               <input
                 type="text"
