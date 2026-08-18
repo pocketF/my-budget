@@ -103,12 +103,12 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
                 type="date"
                 value={draft.date}
                 onChange={(e) => setDraft({ ...draft, date: e.target.value })}
-                className={fieldClass}
+                className={`w-full sm:w-auto ${fieldClass}`}
               />
               <select
                 value={draft.category}
                 onChange={(e) => setDraft({ ...draft, category: e.target.value })}
-                className={fieldClass}
+                className={`w-full sm:w-auto ${fieldClass}`}
               >
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c}>
@@ -122,29 +122,31 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
                 step="1"
                 value={draft.amount}
                 onChange={(e) => setDraft({ ...draft, amount: e.target.value })}
-                className={`w-24 ${fieldClass}`}
+                className={`w-full sm:w-24 ${fieldClass}`}
               />
               <input
                 type="text"
                 value={draft.memo}
                 onChange={(e) => setDraft({ ...draft, memo: e.target.value })}
-                className={`flex-1 ${fieldClass}`}
+                className={`w-full min-w-0 flex-1 ${fieldClass}`}
               />
-              <button
-                type="button"
-                onClick={() => saveEdit(expense.id)}
-                disabled={savingId === expense.id}
-                className="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-50"
-              >
-                {savingId === expense.id ? '저장 중...' : '저장'}
-              </button>
-              <button
-                type="button"
-                onClick={cancelEdit}
-                className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100"
-              >
-                취소
-              </button>
+              <div className="flex w-full gap-2 sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => saveEdit(expense.id)}
+                  disabled={savingId === expense.id}
+                  className="flex-1 rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-50 sm:flex-none"
+                >
+                  {savingId === expense.id ? '저장 중...' : '저장'}
+                </button>
+                <button
+                  type="button"
+                  onClick={cancelEdit}
+                  className="flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 sm:flex-none"
+                >
+                  취소
+                </button>
+              </div>
             </div>
           )
         }
@@ -154,7 +156,7 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
             key={expense.id}
             className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 hover:bg-slate-50"
           >
-            <div className="flex flex-wrap items-center gap-2 text-sm">
+            <div className="flex min-w-0 flex-wrap items-center gap-2 text-sm">
               <span className="text-slate-400">{expense.date}</span>
               <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
                 {expense.category}
@@ -162,7 +164,9 @@ export default function ExpenseList({ expenses, onUpdated, onDeleted }) {
               <span className="font-semibold text-slate-900">
                 {Number(expense.amount).toLocaleString()}원
               </span>
-              {expense.memo && <span className="text-slate-500">{expense.memo}</span>}
+              {expense.memo && (
+                <span className="min-w-0 break-words text-slate-500">{expense.memo}</span>
+              )}
             </div>
 
             <div className="flex shrink-0 gap-2">

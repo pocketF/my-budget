@@ -40,15 +40,15 @@ export default function AuthForm() {
 
   if (isLoggedIn) {
     return (
-      <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-        <div>
+      <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+        <div className="min-w-0">
           {message && <p className="mb-1 text-sm text-emerald-600">{message}</p>}
-          <span className="text-sm text-slate-700">{user.email}</span>
+          <span className="block truncate text-sm text-slate-700">{user.email}</span>
         </div>
         <button
           type="button"
           onClick={signOut}
-          className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
+          className="shrink-0 self-start rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 sm:self-auto"
         >
           로그아웃
         </button>
@@ -57,7 +57,7 @@ export default function AuthForm() {
   }
 
   return (
-    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
       <h2 className="text-lg font-semibold text-slate-900">
         {mode === 'signIn' ? '로그인' : '회원가입'}
       </h2>

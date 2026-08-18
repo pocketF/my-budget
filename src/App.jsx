@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="mx-auto max-w-2xl space-y-6 px-4 py-10">
+      <div className="mx-auto max-w-2xl space-y-6 px-4 py-6 sm:py-10">
         <header>
           <h1 className="text-2xl font-bold text-slate-900">가계부</h1>
           <p className="mt-1 text-sm text-slate-500">지출을 기록하고 한눈에 확인하세요</p>
@@ -66,7 +66,7 @@ function App() {
 
             <ExpenseSummary expenses={expenses} />
 
-            <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
               <h2 className="text-lg font-semibold text-slate-900">지출 내역</h2>
 
               <ExpenseFilters
@@ -88,7 +88,7 @@ function App() {
             </section>
           </>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-500">
+          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-500 sm:p-10">
             로그인하면 지출을 기록할 수 있어요.
           </div>
         )}
